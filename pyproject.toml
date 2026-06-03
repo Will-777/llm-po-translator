@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llm-po-translator"
+version = "0.1.0"
+description = "Translate Django .po files automatically via LLM (Anthropic, Groq)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = ["django", "i18n", "translation", "po", "llm", "anthropic", "groq"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: Django",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Internationalization",
+    "Topic :: Software Development :: Localization",
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+anthropic = ["anthropic>=0.40.0"]
+groq = ["groq>=0.13.0"]
+all = ["anthropic>=0.40.0", "groq>=0.13.0"]
+
+[project.scripts]
+llm-po-translate = "llm_po_translator.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Will-777/llm-po-translator"
+Issues = "https://github.com/Will-777/llm-po-translator/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["llm_po_translator"]
